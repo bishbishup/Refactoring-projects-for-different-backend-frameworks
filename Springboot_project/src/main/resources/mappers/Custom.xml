@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dlg.blog_project.mapper.CustomMapper">
+    <select id="customShow" parameterType="String" resultType="com.dlg.blog_project.pojo.Custom">
+        select * from custom_evaluation_table
+    </select>
+
+    <insert id="customInsert" parameterType="com.dlg.blog_project.pojo.Custom"
+    useGeneratedKeys="true" keyProperty="ID" keyColumn="id">
+        insert into `custom_evaluation_table`(`title`,`description`,`src`)
+        values (#{title},#{description},#{src});
+    </insert>
+    
+    <delete id="deleteById" parameterType="Integer">
+        delete from custom_evaluation_table where ID = #{ID};
+    </delete>
+
+    <update id="updateById" parameterType="com.dlg.blog_project.pojo.Custom">
+        update custom_evaluation_table set title = #{title}, description = #{description},src = #{src}
+        where ID = #{ID}
+    </update>
+
+     <select id="selectById" resultType="com.dlg.blog_project.pojo.Custom">
+        select * from custom_evaluation_table where ID = #{ID};
+    </select>
+</mapper>
